@@ -142,5 +142,31 @@ namespace NZWalks.API.Controllers
 
 
         }
+
+        #region Private Methods
+        private bool ValidateAddWalkASync(Models.DTO.AddWalkRequest addWalkRequest)
+        {
+            if (addWalkRequest == null)
+            {
+                ModelState.AddModelError(nameof(addWalkRequest.Area),
+                   $"{nameof(addWalkRequest)} cannot be empty");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(addWalkRequest.Name))
+            {
+                ModelState.AddModelError(nameof(addWalkRequest.Name),
+               $"{nameof(addWalkRequest.Name)} is required");
+            }
+
+            if (addWalkRequest.Length > 0)
+            {
+                ModelState.AddModelError(nameof(addWalkRequest.Length),
+            $"{nameof(addWalkRequest.Length)} should be greater than zero");
+            }
+
+        }
+
+        #endregion
     }
 }
