@@ -75,10 +75,10 @@ namespace NZWalks.API.Controllers
         {
             // Validate Request
 
-            if (!ValidateAddRegionAsync(addRegionRequest))
-            { 
-                return BadRequest(ModelState);
-            }
+            //if (!ValidateAddRegionAsync(addRegionRequest))
+            //{ 
+            //    return BadRequest(ModelState);
+            //}
 
             // Request(DTO) to Domain Model
             var region = new Models.Domain.Region()
@@ -150,10 +150,10 @@ namespace NZWalks.API.Controllers
 
             // Validate incoming request
 
-            if (!ValidateUpdateRegionAsync(updateRegionRequest))
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ValidateUpdateRegionAsync(updateRegionRequest))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             //Convert DTO to Domain Model
 
