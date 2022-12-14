@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using NZWalks.API.Models.Domain;
 using NZWalks.API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NZWalks.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    
     public class RegionsController : Controller
     {
         private readonly IRegionRepository regionRepository;
@@ -22,6 +24,7 @@ namespace NZWalks.API.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllRegionsAsync()
         {
             var regions = await regionRepository.GetAllAsync();
@@ -71,6 +74,7 @@ namespace NZWalks.API.Controllers
             return Ok(regionDTO);
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddRegionAsync(Models.DTO.AddRegionRequest addRegionRequest)
         {
             // Validate Request
@@ -113,6 +117,7 @@ namespace NZWalks.API.Controllers
         }
         [HttpDelete]
         [Route("{id:guid}")]
+        [Authorize]
         public async Task<IActionResult> DeleteRegionAsync(Guid id)
         {
             // Get Region from Db
@@ -145,6 +150,7 @@ namespace NZWalks.API.Controllers
         }
         [HttpPut]
         [Route("{id:guid}")]
+        [Authorize]
         public async Task<IActionResult> UpdateRegionAsync([FromRoute]Guid id, [FromBody] Models.DTO.UpdateRegionRequest updateRegionRequest)
         {
 

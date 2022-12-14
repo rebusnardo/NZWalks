@@ -29,6 +29,12 @@ builder.Services.AddScoped<IWalkRepository, WalkRepository>();
 
 builder.Services.AddScoped<IWalkDifficultyRepository, WalkDifficultyRepository>();
 
+builder.Services.AddScoped<ITokenHandler, NZWalks.API.Repositories.TokenHandler>();
+
+builder.Services.AddSingleton<IUserRepository, StaticUserRepository>();
+
+
+
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
